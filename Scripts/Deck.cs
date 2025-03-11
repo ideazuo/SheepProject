@@ -131,7 +131,7 @@ public class Deck : MonoBehaviour
                 if (ifMoveX)
                 {
                     //偏移方向是左还是右
-                    //dirX = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;
+                    dirX = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;
                 }
                 //随机当前行是否偏移
                 bool ifMoveY = Convert.ToBoolean(UnityEngine.Random.Range(0, 2));
@@ -139,7 +139,7 @@ public class Deck : MonoBehaviour
                 if (ifMoveY)
                 {
                     //偏移方向是上还是下
-                    //dirY = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;
+                    dirY = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;
                 }
                 //准备临时数组存贮前半部分随机到的卡牌状态，以对称生成后半部分状态
                 CREATESTATE[] halfState = new CREATESTATE[column / 2];
@@ -170,11 +170,10 @@ public class Deck : MonoBehaviour
                             go = CreateCardGo(i, j, dirX, dirY);
                             break;
                         case CREATESTATE.RANDOM:
-                            go = CreateCardGo(i, j, dirX, dirY);
                             if (UnityEngine.Random.Range(0,2)==0?true:false)
                             {
                                 //随机生成
-                                
+                                go = CreateCardGo(i, j, dirX, dirY);
                             }
                             break;
                         case CREATESTATE.ONLYCREATE:
